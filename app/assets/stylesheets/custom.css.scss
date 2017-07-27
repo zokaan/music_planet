@@ -1,0 +1,34 @@
+$navbar-default-bg: #353535;
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.jumbotron{
+	margin-top: 20px;
+	background-image: asset-url('music.jpg');
+	background-size: cover;
+	height: 300px;
+  color: #fffa00;
+}
+
+.body-background{
+  background-color: #000000;
+}
+
+#logo{
+  float: left;
+  font-size: 1.5em;
+  color: #fffa00;
+  text-transform: capitalize;
+  letter-spacing: -1px;
+  font-weight: bold;
+}
+
+#search{
+  background-color: #353535;
+  opacity: 0.5;
+}
+
+#navbar-right{
+padding-top: 7px;
+}
