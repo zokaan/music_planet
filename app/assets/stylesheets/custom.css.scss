@@ -8,7 +8,8 @@ $navbar-default-bg: #353535;
 	background-image: asset-url('music.jpg');
 	background-size: cover;
 	height: 300px;
-  color: #fffa00;
+  color: #ffcc00;
+	text-shadow: -5px 0 black, 0 5px black, 5px 0 black, 0 -5px black;
 }
 
 .body-background{
