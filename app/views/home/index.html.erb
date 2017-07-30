@@ -4,4 +4,19 @@
   	<p>Welcome to our website ... You are on the best place of great music...</p>
   	<p style="text-align: right;">Hope you will enjoy!!! :)</p>
 	</div>
+<div>
+<div class="container-fluid bg-3 text-center">
+	<div class="row">
+		<div class="col-md-6">
+			<h2> About us</h2>
+			<br>
+			<p>you can find more about us <%= link_to 'here', about_path, id:"about" %></p>
+		</div>
+		<div class="col-md-6">
+			<h2>Contact</h2>
+			<br>
+			<p> If you want become our member, frst you need to <%= link_to 'register', new_user_path, id:"register" %> on our site...
+			Or if you already have account, please <%= link_to 'login', new_user_path, id:"login" %></p>
+		</div>
+	</div>
 </div>

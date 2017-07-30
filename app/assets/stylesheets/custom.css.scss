@@ -19,7 +19,8 @@ $navbar-default-bg: #353535;
 #logo{
   float: left;
   font-size: 1.5em;
-  color: #fffa00;
+	color: #ffcc00;
+  //color: #fffa00;
   text-transform: capitalize;
   letter-spacing: -1px;
   font-weight: bold;
@@ -30,6 +31,43 @@ $navbar-default-bg: #353535;
   opacity: 0.5;
 }
 
-#navbar-right{
-padding-top: 7px;
+.row{
+	color: #ffcc00;
+// 	.col-md-6{
+// 	border: 1px solid #ffcc00;
+// 	border-radius: 5px;
+// }
+}
+
+
+#register{
+	color: #2369db;
+}
+
+#login{
+	color: #3dbf54;
+}
+
+#about{
+	color: #ffcc00;
+	text-decoration: underline;
+}
+
+#error_explanation{
+	color: red;
+	ul {
+		color: red;
+		margin: 0 0 30px 0;
+	}
+}
+
+.field_with_errors {
+	@extended .has_error;
+	.form-control {
+		color: $state-danger-text;
+	}
+}
+
+#msg{
+	color: #ffffff;
 }
