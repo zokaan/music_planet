@@ -1,4 +1,4 @@
-$navbar-default-bg: #353535;
+// $navbar-default-bg: #353535;
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -24,6 +24,7 @@ $navbar-default-bg: #353535;
   text-transform: capitalize;
   letter-spacing: -1px;
   font-weight: bold;
+	padding-top: 10px;
 }
 
 #search{

@@ -1,0 +1,16 @@
+
+<tr>
+  <td><%= link_to song.song_name.titleize, song_path(song) %></td>
+  <td><%= song.artist.titleize %></td>
+  <td><%= song.genre.titleize %></td>
+  <td><%= auto_link(song.youtube_link) %></td>
+  <td><% if song.album %>
+    <%= link_to song.album.album_name.titleize, album_path(song.album) %>
+    <% end %>
+  </td>
+  <td>
+    <%= link_to 'Details', song_path(song), class: 'btn btn-sm btn-success' %>
+    <%= link_to 'Edit', edit_song_path(song), class: 'btn btn-sm btn-success' %>
+    <%= link_to 'Delete', song_path(song), method: :delete, data: {confirm: "Are you sure you want delete this song?"}, class: 'btn btn-sm btn-danger' %>
+  </td>
+</tr>

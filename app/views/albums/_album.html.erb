@@ -1,0 +1,16 @@
+
+<tr>
+  <td><%= link_to album.album_name.titleize, album_path(album) %></td>
+  <td><%= album.publisher.titleize %></td>
+  <td><%= album.made_in.titleize %></td>
+  <td><%= album.created_at.strftime('%F') %></td>
+  <td><% if album.user %>
+    <%= link_to album.user.name.titleize, user_path(album.user) %>
+    <% end %>
+  </td>
+  <td>
+    <%= link_to 'Details', album_path(album), class: 'btn btn-sm btn-success' %>
+    <%= link_to 'Edit', edit_album_path(album), class: 'btn btn-sm btn-success' %>
+    <%= link_to 'Delete', album_path(album), method: :delete, data: {confirm: "Are you sure you want delete this album?"}, class: 'btn btn-sm btn-danger' %>
+  </td>
+</tr>

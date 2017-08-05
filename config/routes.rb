@@ -4,8 +4,10 @@ Rails.application.routes.draw do
 
   resource :about, only: [:show]
   resource :contact, only: [:show]
+  resource :session, only: [:new, :create, :destroy]
   get '/signup', to: 'users#new'
   resources :users
   resources :songs
+  resources :albums
 
 end

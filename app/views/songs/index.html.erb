@@ -2,3 +2,28 @@
   <% flash.each do |message_type, message| %>
     <div class="allert alert-<%= message_type %>" id="msg"><%= message %></div>
   <% end %>
+
+
+  <br>
+  <br>
+  <br>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Song title</th>
+              <th>Artist</th>
+              <th>Genre</th>
+              <th>Link source</th>
+              <th>From album</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render @songs %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
