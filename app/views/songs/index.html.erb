@@ -10,8 +10,8 @@
       <div class="col-md-8">
          <div class="text-left">
           <%= form_tag(songs_path, method: "get", id: "search-form") do %>
-            <%= text_field_tag :search, params[:search], placeholder: "Search for song..." %>
-            <%= button_tag("Find", type: "submit", class: "btn btn-primary") %>
+            <%= text_field_tag :search, params[:search], placeholder: "Type song name or artist..." %>
+            <%= button_tag("Search", type: "submit", class: "btn btn-primary") %>
           <% end %>
         </div>
         <div class="text-right">

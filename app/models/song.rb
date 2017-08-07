@@ -9,7 +9,7 @@ class Song < ApplicationRecord
 
    def self.search(search)
   #   if search
-       where('song_name LIKE ?', "%#{search}%")
+       where('song_name LIKE ? OR artist LIKE ?', "%#{search}%", "%#{search}%")
   #   else
   #     order('created_at DESC')
      end
