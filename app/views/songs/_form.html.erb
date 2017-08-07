@@ -1,0 +1,31 @@
+<%= form_for @song do |form| %>
+  <%= form.label :song_name %>
+  <%= form.text_field :song_name, class: 'form-control' %>
+  <br>
+  <%= form.label :artist %>
+  <%= form.text_field :artist, class: 'form-control' %>
+  <br>
+  <%= form.label :genre %>
+  <%= form.text_field :genre, class: 'form-control' %>
+  <br>
+  <%= form.label :favorites %>
+  <%= form.text_field :favorites, class: 'form-control' %>
+  <br>
+  <%= form.label :year_of_publishing %>
+  <%= form.text_field :year_of_publishing, class: 'form-control' %>
+  <br>
+  <%= form.label :duration %>
+  <%= form.text_field :duration, class: 'form-control' %>
+  <br>
+  <%= form.label :youtube_link %>
+  <%= form.text_field :youtube_link, class: 'form-control' %>
+  <br>
+  <%= form.label :album_id %>
+    <%= form.collection_select :album_id, Album.all, :id, :album_name, { prompt: 'Choose album' }, class: 'form-control' %>
+  <br>
+  <%= form.label :user_id %>
+    <%= form.collection_select :user_id, User.all, :id, :name, { prompt: 'Choose user' }, class: 'form-control' %>
+  <br>
+
+  <%= form.submit params[:action] == 'new' ? 'Save' : 'Update', class: 'btn btn-block btn-default' %>
+<% end %>

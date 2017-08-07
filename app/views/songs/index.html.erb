@@ -2,21 +2,23 @@
   <% flash.each do |message_type, message| %>
     <div class="allert alert-<%= message_type %>" id="msg"><%= message %></div>
   <% end %>
-
-
   <br>
   <br>
   <br>
   <div class="container">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-8">
+        <div class="text-right">
+        <%= link_to 'Add new song', new_song_path, class: 'btn btn-sm btn-primary' %>
+        </div>
+        <br>
         <table class="table">
           <thead>
             <tr>
               <th>Song title</th>
               <th>Artist</th>
               <th>Genre</th>
-              <th>Link source</th>
+              <!-- <th>Link source</th> -->
               <th>From album</th>
             </tr>
           </thead>
@@ -25,5 +27,28 @@
           </tbody>
         </table>
       </div>
+
+      <div class="col-md-3 col-md-offset-1">
+        <tr class="sidebar-music">Last added songs<br>
+          <% @favorite_songs.each do |favorite| %>
+            <%= link_to favorite.song_name.titleize, song_path(favorite) %>
+            <br>
+          <% end %>
+        </tr>
+        <br>
+        <tr class="sidebar-music">Last added albums<br>
+          <% @top_albums.each do |top| %>
+            <%= link_to top.album_name.titleize, album_path(top) %>
+            <br>
+          <% end %>
+        </tr>
+      </div>
+
+
+
     </div>
   </div>
+
+<div class="text-center">
+<%= will_paginate @songs, render: BootstrapPagination::Rails, previous_label: "<<", next_label: ">>", inner_window: 1, outer_window: 0 %>
+<div>

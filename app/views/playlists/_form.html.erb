@@ -1,0 +1,10 @@
+<%= form_for @playlist do |form| %>
+  <%= form.label :playlist_name %>
+  <%= form.text_field :playlist_name, class: 'form-control' %>
+  <br>
+  <%= form.label :user_id %>
+    <%= form.collection_select :user_id, User.all, :id, :name, { prompt: 'Choose user' }, class: 'form-control' %>
+  <br>
+
+  <%= form.submit params[:action] == 'new' ? 'Save' : 'Update', class: 'btn btn-block btn-default' %>
+<% end %>

@@ -1,0 +1,9 @@
+
+<tr>
+  <td><%= link_to playlist.playlist_name.titleize, playlist_path(playlist) %></td>
+  <td>
+    <%= link_to 'Details', playlist_path(playlist), class: 'btn btn-sm btn-success' %>
+    <%= link_to 'Edit', edit_playlist_path(playlist), class: 'btn btn-sm btn-success' %>
+    <%= link_to 'Delete', playlist_path(playlist), method: :delete, data: {confirm: "Are you sure you want delete this song?"}, class: 'btn btn-sm btn-danger' %>
+  </td>
+</tr>

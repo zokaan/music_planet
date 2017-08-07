@@ -1,0 +1,19 @@
+<%= form_for @album do |form| %>
+  <%= form.label :album_name %>
+  <%= form.text_field :album_name, class: 'form-control' %>
+  <br>
+  <%= form.label :publisher %>
+  <%= form.text_field :publisher, class: 'form-control' %>
+  <br>
+  <%= form.label :made_in %>
+  <%= form.text_field :made_in, class: 'form-control' %>
+  <br>
+  <%= form.label :description %>
+  <%= form.text_field :description, class: 'form-control' %>
+  <br>
+  <%= form.label :user_id %>
+    <%= form.collection_select :user_id, User.all, :id, :name, { prompt: 'Choose user' }, class: 'form-control' %>
+  <br>
+
+  <%= form.submit params[:action] == 'new' ? 'Save' : 'Update', class: 'btn btn-block btn-default' %>
+<% end %>

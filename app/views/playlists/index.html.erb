@@ -1,0 +1,28 @@
+<div class="conteiner">
+  <% flash.each do |message_type, message| %>
+    <div class="allert alert-<%= message_type %>" id="msg"><%= message %></div>
+  <% end %>
+
+
+  <br>
+  <br>
+  <br>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="text-right">
+        <%= link_to 'Add new playlist', new_playlist_path, class: 'btn btn-sm btn-primary' %>
+        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Playlist title</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render @playlists %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

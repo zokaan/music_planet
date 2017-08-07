@@ -4,6 +4,8 @@ class User < ApplicationRecord
   has_secure_password
 
   has_many :albums
+  has_many :songs
+  has_many :playlists
 
   ROLE_USER = 0
   ROLE_ADMIN = 1
