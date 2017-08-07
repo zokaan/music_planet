@@ -6,4 +6,13 @@ class Song < ApplicationRecord
   has_many :playlists, through: :lists
 
   scope :last_added_first, -> { order(created_at: :desc) }
+
+   def self.search(search)
+  #   if search
+       where('song_name LIKE ?', "%#{search}%")
+  #   else
+  #     order('created_at DESC')
+     end
+  # end
+
 end

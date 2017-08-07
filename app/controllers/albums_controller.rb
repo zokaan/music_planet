@@ -1,4 +1,6 @@
 class AlbumsController < ApplicationController
+  before_action :authorize
+  
   def index
     @albums = Album.all.order("created_at DESC").paginate(page: params[:page], per_page: 10)
   end

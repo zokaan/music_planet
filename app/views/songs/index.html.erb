@@ -8,6 +8,12 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8">
+         <div class="text-left">
+          <%= form_tag(songs_path, method: "get", id: "search-form") do %>
+            <%= text_field_tag :search, params[:search], placeholder: "Search for song..." %>
+            <%= button_tag("Find", type: "submit", class: "btn btn-primary") %>
+          <% end %>
+        </div>
         <div class="text-right">
         <%= link_to 'Add new song', new_song_path, class: 'btn btn-sm btn-primary' %>
         </div>
@@ -44,11 +50,10 @@
         </tr>
       </div>
 
+      <div class="text-center">
+      <%= will_paginate @songs, render: BootstrapPagination::Rails, previous_label: "<<", next_label: ">>", inner_window: 1, outer_window: 0 %>
+      <div>
 
 
     </div>
   </div>
-
-<div class="text-center">
-<%= will_paginate @songs, render: BootstrapPagination::Rails, previous_label: "<<", next_label: ">>", inner_window: 1, outer_window: 0 %>
-<div>
