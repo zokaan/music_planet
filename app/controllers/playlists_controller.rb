@@ -1,6 +1,8 @@
 class PlaylistsController < ApplicationController
+  before_action :authorize
+
   def index
-    @playlists = Playlist.all
+    @playlists = current_user.try(:playlists) || Playlist.all
   end
 
   def new
@@ -8,7 +10,9 @@ class PlaylistsController < ApplicationController
   end
 
 def create
+  @user = current_user
   @playlist = Playlist.new(playlist_params)
+  @playlist.set_user!(current_user)
 
   if @playlist.save
     flash[:notice] = 'Playlist successfully added!'
@@ -18,6 +22,9 @@ def create
   end
 end
 
+def update
+end
+
 def destroy
     @playlist = Playlist.find(params[:id])
     if @playlist.present?
@@ -25,6 +32,7 @@ def destroy
     end
     redirect_to playlists_path
 end
+
 
 private
 

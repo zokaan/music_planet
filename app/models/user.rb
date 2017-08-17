@@ -45,7 +45,7 @@ class User < ApplicationRecord
   end
 
   def admin?
-    role == ROLE_SUPERADMIN
+    role == ROLE_ADMIN
   end
 
   def superadmin?

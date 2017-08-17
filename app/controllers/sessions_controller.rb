@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:password])
       log_in @user
       params[:remember_me] == '1' ? remember(@user) : forget(@user)
-      redirect_to songs_path
+        redirect_to songs_path
     else
     render :new
     end

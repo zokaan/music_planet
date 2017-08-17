@@ -5,6 +5,9 @@ class Song < ApplicationRecord
   has_many :lists
   has_many :playlists, through: :lists
 
+  validates :youtube_link, presence: true
+  validates :year_of_publishing, presence: true
+
   scope :last_added_first, -> { order(created_at: :desc) }
 
    def self.search(search)
@@ -14,5 +17,6 @@ class Song < ApplicationRecord
   #     order('created_at DESC')
      end
   # end
+
 
 end

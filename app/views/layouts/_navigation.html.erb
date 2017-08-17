@@ -11,11 +11,21 @@
 
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="nav navbar-nav">
-        <li class="<%= 'active' if params[:action] == 'show' %>"><%= link_to 'About', about_path %></li>
-        <li class="<%= 'active' if params[:action] == 'show' %>"><%= link_to 'Contact', contact_path %></li>
+          <li class="<%= 'active' if params[:action] == 'show' %>"><%= link_to 'About', about_path %></li>
+          <li class="<%= 'active' if params[:action] == 'show' %>"><%= link_to 'Contact', contact_path %></li>
+        <% if logged_in? && current_user.superadmin?  %>
+          <li class="<%= 'active' if params[:action] == 'index' %>"><%= link_to 'Songs', songs_path %></li>
+          <li class="<%= 'active' if params[:action] == 'index' %>"><%= link_to 'Playlists', superadmin_playlists_path %></li>
+          <li class="<%= 'active' if params[:action] == 'index' %>"><%= link_to 'Albums', superadmin_albums_path %></li>
+      <% elsif logged_in? && current_user.admin? %>
         <li class="<%= 'active' if params[:action] == 'index' %>"><%= link_to 'Songs', songs_path %></li>
-        <li class="<%= 'active' if params[:action] == 'index' %>"><%= link_to 'Albums', albums_path %></li>
+          <li class="<%= 'active' if params[:action] == 'index' %>"><%= link_to 'Playlists', admin_playlists_path %></li>
+          <li class="<%= 'active' if params[:action] == 'index' %>"><%= link_to 'Albums', admin_albums_path %></li>
+        <% else logged_in? %>
+        <li class="<%= 'active' if params[:action] == 'index' %>"><%= link_to 'Songs', songs_path %></li>
         <li class="<%= 'active' if params[:action] == 'index' %>"><%= link_to 'Playlists', playlists_path %></li>
+
+        <%end %>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
@@ -23,16 +33,16 @@
           <li><%= link_to 'Log in', new_session_path %></li>
           <li><%= link_to 'Register', new_user_path, id: "register" %></li>
         <% else %>
-        <div class="conteiner">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Loged in as: <%= current_user.name %><b class="caret"></b></a>
-              <% if current_user.admin? %>
-                <li><%= link_to 'About', about_path %></li>
-                <% elsif current_user.superadmin? %>
-                <li><%= link_to 'Contact', contact_path %></li>
-              <% end %>
-              <li><%= link_to 'Log out', session_path, method: :delete %></li>
-          </div>
-        <% end %>
+        <li class="dropdown">
+          <a data-toggle="dropdown" class="dropdown-toggle" href="#">Logged in as: <%= current_user.name %> <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <% if current_user.admin? %>
+              <li><%= link_to 'Dashboard', admin_dashboard_path %></li>
+            <% end %>
+            <li><%= link_to 'Logout', session_path, method: :delete %></li>
+          </ul>
+        </li>
+<% end %>
       </ul>
     </div>
 </nav>

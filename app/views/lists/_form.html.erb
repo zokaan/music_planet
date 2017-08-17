@@ -1,0 +1,8 @@
+<!-- ovdje dodas formu: padajuca lista za playlist,
+sakriveno polje song_id (vidi kako si pisala na playlist
+current_user) i submit dugme -->
+<%= form_for @list, remote: true do |f| %>
+ <%= form.label :playlist_id %>
+ <%= form.collection_select :playlist_id, current_user.playlist_id, :id, :playlist_name, { prompt: 'Choolse playlist' }, class: 'form-control' %>
+ <% form.hidden_field :song_id, :value => song.id %>
+<% end %>

@@ -8,9 +8,24 @@
     <%= link_to song.album.album_name.titleize, album_path(song.album) %>
     <% end %>
   </td>
+  <td><%= song.year_of_publishing.strftime("%Y") %></td>
+  <td><%= song.duration %></td>
   <td>
-    <%= link_to 'Details', song_path(song), class: 'btn btn-sm btn-success' %>
-    <%= link_to 'Edit', edit_song_path(song), class: 'btn btn-sm btn-success' %>
-    <%= link_to 'Delete', song_path(song), method: :delete, data: {confirm: "Are you sure you want delete this song?"}, class: 'btn btn-sm btn-danger' %>
-  </td>
+    <%= link_to '<i class="glyphicon glyphicon-star"></i>'.html_safe, songs_path, class: 'btn btn-sm btn-warning' %>
+    <%= link_to '<i class="glyphicon glyphicon-list"></i>'.html_safe, new_list_path(song_id: song.id), remote: true, class: 'btn btn-sm btn-success', data: {toggle: "modal", target: "#popUpModal"}%>
+    <!-- <%= link_to 'Add to playlist', new_list_path(song_id: song.id), remote: true, class: 'btn btn-sm btn-success' %> -->
+    <%= render 'lists/modal' %>
+    <%= link_to '<i class="glyphicon glyphicon-play"></i>'.html_safe, song.youtube_link, class: 'btn btn-sm btn-success' %>
+
+    <% if logged_in? && (current_user.superadmin? || current_user.admin?)  %>
+      <%= link_to '<i class="glyphicon glyphicon-wrench"></i>'.html_safe, edit_song_path(song), class: 'btn btn-sm btn-success' %>
+      <%= link_to '<i class="glyphicon glyphicon-remove"></i>'.html_safe, song_path(song), method: :delete, data: {confirm: "Are you sure you want delete this song?"}, class: 'btn btn-sm btn-danger' %>
+    <% end %>
+
+   </td>
+
 </tr>
+
+
+  </div>
+</div>

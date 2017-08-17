@@ -1,3 +1,9 @@
 .sidebar-music {
   border-bottom-width: 2px solid;
 }
+
+
+.btn-primary{
+  background-color: #8b8d8e;
+  color: #000000;
+}

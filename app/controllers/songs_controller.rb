@@ -1,4 +1,6 @@
 class SongsController < ApplicationController
+  before_action :authorize
+  before_action :find_song, { only: [:edit, :update, :show, :destroy] }
 
   def index
     if params[:search]
@@ -9,6 +11,11 @@ class SongsController < ApplicationController
     # @songs = Song.all.order("created_at DESC").paginate(page: params[:page], per_page: 10)
     @favorite_songs = Song.last_added_first.limit(5)
     @top_albums = Album.last_added_first.limit(5)
+
+    respond_to do |format|
+        format.js
+        format.html
+    end
   end
 
   def new
@@ -22,6 +29,18 @@ class SongsController < ApplicationController
       redirect_to songs_path
     else
       render :new
+    end
+  end
+
+  def edit
+
+  end
+
+  def update
+    if @song.update(song_params)
+      redirect_to songs_path
+    else
+      render :edit
     end
   end
 
@@ -44,6 +63,10 @@ end
 
   def song_params
     params.require(:song).permit(:song_name, :artist, :genre, :favorites, :year_of_publishing, :duration, :youtube_link, :album_id, :user_id)
+  end
+
+  def find_song
+    @song = Song.find(params[:id])
   end
 
 end

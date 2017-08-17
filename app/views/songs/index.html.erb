@@ -4,19 +4,22 @@
   <% end %>
   <br>
   <br>
+  <div id="product-alerts"></div>
   <br>
   <div class="container">
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-10">
          <div class="text-left">
           <%= form_tag(songs_path, method: "get", id: "search-form") do %>
             <%= text_field_tag :search, params[:search], placeholder: "Type song name or artist..." %>
             <%= button_tag("Search", type: "submit", class: "btn btn-primary") %>
           <% end %>
         </div>
+        <% if logged_in? && (current_user.admin? || current_user.superadmin?) %>
         <div class="text-right">
         <%= link_to 'Add new song', new_song_path, class: 'btn btn-sm btn-primary' %>
-        </div>
+        </div
+        <% end %>
         <br>
         <table class="table">
           <thead>
@@ -26,6 +29,8 @@
               <th>Genre</th>
               <!-- <th>Link source</th> -->
               <th>From album</th>
+              <th>Year</th>
+              <th>Duration</th>
             </tr>
           </thead>
           <tbody>
@@ -34,21 +39,21 @@
         </table>
       </div>
 
-      <div class="col-md-3 col-md-offset-1">
-        <tr class="sidebar-music">Last added songs<br>
-          <% @favorite_songs.each do |favorite| %>
-            <%= link_to favorite.song_name.titleize, song_path(favorite) %>
-            <br>
-          <% end %>
-        </tr>
-        <br>
-        <tr class="sidebar-music">Last added albums<br>
-          <% @top_albums.each do |top| %>
-            <%= link_to top.album_name.titleize, album_path(top) %>
-            <br>
-          <% end %>
-        </tr>
-      </div>
+        <div class="col-md-2">
+          <tr class="sidebar-music">Last added songs<br>
+            <% @favorite_songs.each do |favorite| %>
+              <%= link_to favorite.song_name.titleize, song_path(favorite) %>
+              <br>
+            <% end %>
+          </tr>
+          <br>
+          <tr class="sidebar-music">Last added albums<br>
+            <% @top_albums.each do |top| %>
+              <%= link_to top.album_name.titleize, album_path(top) %>
+              <br>
+            <% end %>
+          </tr>
+        </div>
 
       <div class="text-center">
       <%= will_paginate @songs, render: BootstrapPagination::Rails, previous_label: "<<", next_label: ">>", inner_window: 1, outer_window: 0 %>
