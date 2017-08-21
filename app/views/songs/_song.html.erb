@@ -2,13 +2,16 @@
 <tr>
   <td><%= link_to song.song_name.titleize, song_path(song) %></td>
   <td><%= song.artist.titleize %></td>
-  <td><%= song.genre.titleize %></td>
+  <td><% if song.genre %>
+      <%= link_to song.genre.titleize, genre_songs_path(genre: song.genre) %>
+      <% end %>
+  </td>
   <!-- <td><%= auto_link(song.youtube_link) %></td> -->
   <td><% if song.album %>
     <%= link_to song.album.album_name.titleize, album_path(song.album) %>
     <% end %>
   </td>
-  <td><%= song.year_of_publishing.strftime("%Y") %></td>
+   <td><%= song.year_of_publishing.strftime("%Y") %></td> 
   <td><%= song.duration %></td>
   <td>
     <%= link_to '<i class="glyphicon glyphicon-star"></i>'.html_safe, songs_path, class: 'btn btn-sm btn-warning' %>

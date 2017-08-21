@@ -15,10 +15,15 @@ Rails.application.routes.draw do
 
   resource :about, only: [:show]
   resource :contact, only: [:show]
+  resource :genre, only: [:show]
   resource :session, only: [:new, :create, :destroy]
   get '/signup', to: 'users#new'
   resources :users
-  resources :songs
+  resources :songs do
+    collection do
+    get :genre
+    end
+  end
   resources :albums
   resources :playlists
   resources :lists, only: [:index, :new, :create]

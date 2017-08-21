@@ -1,0 +1,27 @@
+<div class="container">
+<div class="row">
+  <div class="col-md-6">
+    <%= image_tag @album.image_url %>
+  </div>
+  <div class="col-md-6">
+    <p><strong>Album title:</strong></p>
+    <p><%= @album.album_name %></p>
+    <br>
+    <p><strong>Publisher:</strong></p>
+    <p><%= @album.publisher %></p>
+    <br>
+    <p><strong>Made in:</strong></p>
+    <p><%= @album.made_in %></p>
+    <br>
+    <p><strong>Description:</strong></p>
+    <p><%= @album.description %></p>
+    <br>
+    <p><strong>Songs on this album:</strong></p>
+    <p><% @album.songs.each do |song| %>
+       <%= song.song_name.titleize %><br>
+       <% end %></p>
+  </div>
+  <% link_to 'Edit album', album_path(@album), class: "btn btn-primary" %>
+  <% link_to 'Back', albums_path, class: "btn btn-default" %>
+</div>
+</div>

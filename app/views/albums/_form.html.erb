@@ -1,4 +1,4 @@
-<%= form_for @album do |form| %>
+<%= form_for @album, html: {multipart: true} do |form| %>
   <%= form.label :album_name %>
   <%= form.text_field :album_name, class: 'form-control' %>
   <br>
@@ -10,6 +10,9 @@
   <br>
   <%= form.label :description %>
   <%= form.text_field :description, class: 'form-control' %>
+  <br>
+  <%= form.label :image %>
+  <%= form.file_field :image, class: 'form-control' %>
   <br>
   <%= form.label :user_id %>
     <%= form.collection_select :user_id, User.all, :id, :name, { prompt: 'Choose user' }, class: 'form-control' %>

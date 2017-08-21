@@ -36,6 +36,8 @@ class SongsController < ApplicationController
 
   end
 
+
+
   def update
     if @song.update(song_params)
       redirect_to songs_path
@@ -54,10 +56,17 @@ class SongsController < ApplicationController
   end
 
   def search
-  if params[:search].present?
-    @songs = Song.search(params[:search])
+    if params[:search].present?
+      @songs = Song.search(params[:search])
+    end
   end
-end
+
+  def genre
+    if params[:genre].present?
+      @songs = Song.where(genre: params[:genre])
+      # @genre = Song.find_by(genre: params[:genre])
+    end
+  end
 
   private
 

@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+
+      <h3>List of songs for selected genre:</h3>
+      <br>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Song title</th>
+              <th>Artist</th>
+              <th>Genre</th>
+              <th>From album</th>
+              <th>Year</th>
+              <th>Duration</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render @songs %>
+          </tbody>
+        </table>
+
+    </div>
+  </div>
+</div>
